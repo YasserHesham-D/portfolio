@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yasser Hesham - Backend Developer</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #d4af37;
+        background: #000000;
+        overflow-x: hidden;
+      }
+
+      /* 3D Background Animation */
+      .bg-3d {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+        perspective: 1000px;
+      }
+
+      .golden-particle {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background: #d4af37;
+        border-radius: 50%;
+        box-shadow: 0 0 15px #d4af37, 0 0 30px #d4af37;
+        animation: float3d 15s infinite;
+      }
+
+      @keyframes float3d {
+        0% {
+          transform: translate3d(0, 0, 0) scale(0.5);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        50% {
+          transform: translate3d(var(--tx), var(--ty), 200px) scale(1.5);
+          opacity: 1;
+        }
+        90% {
+          opacity: 0.5;
+        }
+        100% {
+          transform: translate3d(
+              calc(var(--tx) * 2),
+              calc(var(--ty) * 2),
+              400px
+            )
+            scale(2);
+          opacity: 0;
+        }
+      }
+
+      /* Animated Hexagon Pattern */
+      .hex-pattern {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(
+            30deg,
+            transparent 24%,
+            rgba(212, 175, 55, 0.05) 25%,
+            rgba(212, 175, 55, 0.05) 26%,
+            transparent 27%,
+            transparent 74%,
+            rgba(212, 175, 55, 0.05) 75%,
+            rgba(212, 175, 55, 0.05) 76%,
+            transparent 77%,
+            transparent
+          ),
+          linear-gradient(
+            150deg,
+            transparent 24%,
+            rgba(212, 175, 55, 0.05) 25%,
+            rgba(212, 175, 55, 0.05) 26%,
+            transparent 27%,
+            transparent 74%,
+            rgba(212, 175, 55, 0.05) 75%,
+            rgba(212, 175, 55, 0.05) 76%,
+            transparent 77%,
+            transparent
+          );
+        background-size: 50px 90px;
+        z-index: -1;
+        animation: hexMove 20s linear infinite;
+      }
+
+      @keyframes hexMove {
+        0% {
+          background-position: 0 0;
+        }
+        100% {
+          background-position: 50px 90px;
+        }
+      }
+
+      /* 3D Cubes floating in background */
+      .cube-container {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        perspective: 1200px;
+        overflow: hidden;
+      }
+
+      .cube {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        transform-style: preserve-3d;
+        animation: rotateCube 20s infinite linear;
+      }
+
+      @keyframes rotateCube {
+        0% {
+          transform: translate3d(var(--start-x), var(--start-y), 0)
+            rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+        }
+        100% {
+          transform: translate3d(var(--end-x), var(--end-y), 0) rotateX(360deg)
+            rotateY(360deg) rotateZ(360deg);
+        }
+      }
+
+      .cube-face {
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        border: 2px solid rgba(212, 175, 55, 0.3);
+        background: rgba(212, 175, 55, 0.05);
+        box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.1);
+      }
+
+      .cube-face-front {
+        transform: translateZ(30px);
+      }
+      .cube-face-back {
+        transform: translateZ(-30px) rotateY(180deg);
+      }
+      .cube-face-right {
+        transform: rotateY(90deg) translateZ(30px);
+      }
+      .cube-face-left {
+        transform: rotateY(-90deg) translateZ(30px);
+      }
+      .cube-face-top {
+        transform: rotateX(90deg) translateZ(30px);
+      }
+      .cube-face-bottom {
+        transform: rotateX(-90deg) translateZ(30px);
+      }
+
+      /* Waves animation */
+      .waves {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 300px;
+        z-index: -1;
+        overflow: hidden;
+      }
+
+      .wave {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 200%;
+        height: 100%;
+        background: linear-gradient(transparent, rgba(212, 175, 55, 0.03));
+        animation: wave 15s linear infinite;
+      }
+
+      .wave:nth-child(2) {
+        animation: wave 20s linear infinite reverse;
+        opacity: 0.5;
+      }
+
+      .wave:nth-child(3) {
+        animation: wave 25s linear infinite;
+        opacity: 0.3;
+      }
+
+      @keyframes wave {
+        0% {
+          transform: translateX(0) translateY(0);
+        }
+        50% {
+          transform: translateX(-25%) translateY(-20px);
+        }
+        100% {
+          transform: translateX(-50%) translateY(0);
+        }
+      }
+
+      /* Golden light beams */
+      .light-beam {
+        position: fixed;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(
+          to bottom,
+          transparent,
+          rgba(212, 175, 55, 0.3),
+          transparent
+        );
+        animation: beamMove 8s infinite linear;
+        z-index: -1;
+      }
+
+      @keyframes beamMove {
+        0% {
+          transform: translateX(-100vw) rotate(20deg);
+          opacity: 0;
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(200vw) rotate(20deg);
+          opacity: 0;
+        }
+      }
+
+      /* Header with 3D Profile */
+      header {
+        background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+        color: #d4af37;
+        padding: 6rem 2rem 4rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        border-bottom: 3px solid #d4af37;
+      }
+
+      header::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(212, 175, 55, 0.1) 0%,
+          transparent 70%
+        );
+        animation: rotate 20s linear infinite;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .profile-container {
+        position: relative;
+        display: inline-block;
+        margin-bottom: 2rem;
+        perspective: 1000px;
+      }
+
+      .profile-image {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 5px solid #d4af37;
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.5),
+          0 0 60px rgba(212, 175, 55, 0.3),
+          inset 0 0 20px rgba(212, 175, 55, 0.2);
+        object-fit: cover;
+        animation: float 6s ease-in-out infinite;
+        transform-style: preserve-3d;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Placeholder if no image is uploaded */
+      .profile-placeholder {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 5px solid #d4af37;
+        background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        color: #d4af37;
+        box-shadow: 0 0 30px rgba(212, 175, 55, 0.5),
+          0 0 60px rgba(212, 175, 55, 0.3);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px) rotateY(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotateY(10deg);
+        }
+      }
+
+      .profile-ring {
+        position: absolute;
+        width: 220px;
+        height: 220px;
+        border: 2px solid transparent;
+        border-top-color: #d4af37;
+        border-radius: 50%;
+        top: -15px;
+        left: -15px;
+        animation: spin 3s linear infinite;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      header h1 {
+        font-size: 3.5rem;
+        margin-bottom: 0.5rem;
+        background: linear-gradient(
+          135deg,
+          #ffd700 0%,
+          #d4af37 50%,
+          #b8860b 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: fadeInDown 1s ease;
+        position: relative;
+        z-index: 1;
+        text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+      }
+
+      header p {
+        font-size: 1.4rem;
+        color: #d4af37;
+        animation: fadeInUp 1s ease 0.2s backwards;
+        position: relative;
+        z-index: 1;
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .contact-links {
+        margin-top: 2rem;
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        animation: fadeInUp 1s ease 0.4s backwards;
+        position: relative;
+        z-index: 1;
+      }
+
+      .contact-links a {
+        color: #000;
+        background: linear-gradient(135deg, #ffd700 0%, #d4af37 100%);
+        text-decoration: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+      }
+
+      .contact-links a::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      .contact-links a:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .contact-links a:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+        position: relative;
+      }
+
+      section {
+        background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+        margin: 2rem 0;
+        padding: 2.5rem;
+        border-radius: 20px;
+        border: 1px solid rgba(212, 175, 55, 0.2);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5),
+          inset 0 1px 0 rgba(212, 175, 55, 0.1);
+        animation: fadeInUp 0.8s ease;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at top right,
+          rgba(212, 175, 55, 0.05) 0%,
+          transparent 50%
+        );
+        pointer-events: none;
+      }
+
+      section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 50px rgba(212, 175, 55, 0.2),
+          inset 0 1px 0 rgba(212, 175, 55, 0.2);
+        border-color: rgba(212, 175, 55, 0.4);
+      }
+
+      h2 {
+        background: linear-gradient(135deg, #ffd700 0%, #d4af37 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+        font-weight: 700;
+        position: relative;
+        padding-bottom: 0.8rem;
+      }
+
+      h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(90deg, #ffd700, #d4af37);
+        border-radius: 2px;
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+      }
+
+      .about p {
+        font-size: 1.15rem;
+        line-height: 1.9;
+        color: #c0c0c0;
+      }
+
+      .about strong {
+        color: #d4af37;
+      }
+
+      .about ul {
+        margin-left: 2rem;
+        color: #c0c0c0;
+        line-height: 1.9;
+      }
+
+      .about li {
+        margin-bottom: 0.8rem;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+      }
+
+      .skill-category {
+        background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+        padding: 2rem;
+        border-radius: 15px;
+        border-left: 5px solid #d4af37;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        transform-style: preserve-3d;
+      }
+
+      .skill-category::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(212, 175, 55, 0.1) 0%,
+          transparent 70%
+        );
+        transition: transform 0.5s ease;
+      }
+
+      .skill-category:hover::before {
+        transform: translate(-25%, -25%) rotate(45deg);
+      }
+
+      .skill-category:hover {
+        transform: translateY(-8px) scale(1.02) rotateX(2deg);
+        box-shadow: 0 15px 35px rgba(212, 175, 55, 0.3);
+        border-left-color: #ffd700;
+      }
+
+      .skill-category h3 {
+        color: #d4af37;
+        margin-bottom: 1.2rem;
+        font-size: 1.3rem;
+        position: relative;
+      }
+
+      .skill-category ul {
+        list-style: none;
+        position: relative;
+      }
+
+      .skill-category li {
+        padding: 0.5rem 0;
+        color: #c0c0c0;
+        transition: all 0.2s ease;
+      }
+
+      .skill-category li:hover {
+        color: #d4af37;
+        transform: translateX(5px);
+      }
+
+      .skill-category li:before {
+        content: "▹ ";
+        color: #d4af37;
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      .project {
+        background: linear-gradient(
+          135deg,
+          rgba(42, 42, 42, 0.5) 0%,
+          rgba(26, 26, 26, 0.5) 100%
+        );
+        padding: 2rem;
+        margin-bottom: 2rem;
+        border-radius: 15px;
+        border-left: 5px solid #d4af37;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .project::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(
+          circle,
+          rgba(212, 175, 55, 0.1) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        transform: translate(30%, -30%);
+      }
+
+      .project:hover {
+        transform: translateX(10px);
+        box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        border-left-color: #ffd700;
+      }
+
+      .project h3 {
+        color: #d4af37;
+        margin-bottom: 0.5rem;
+        font-size: 1.5rem;
+        position: relative;
+      }
+
+      .project-meta {
+        background: linear-gradient(135deg, #ffd700 0%, #d4af37 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .project p,
+      .project ul {
+        color: #c0c0c0;
+        margin-bottom: 1rem;
+        line-height: 1.8;
+      }
+
+      .project ul {
+        margin-left: 2rem;
+      }
+
+      .project strong {
+        color: #d4af37;
+      }
+
+      .project-tech {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin-top: 1.5rem;
+      }
+
+      .tech-tag {
+        background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+        color: #000;
+        padding: 0.5rem 1.2rem;
+        border-radius: 25px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+      }
+
+      .tech-tag:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+      }
+
+      .project-link {
+        display: inline-block;
+        margin-top: 1.5rem;
+        padding: 0.8rem 2rem;
+        background: linear-gradient(135deg, #ffd700 0%, #d4af37 100%);
+        color: #000;
+        text-decoration: none;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        box-shadow: 0 5px 20px rgba(212, 175, 55, 0.4);
+      }
+
+      .project-link:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(212, 175, 55, 0.6);
+      }
+
+      .experience {
+        border-left: 4px solid #d4af37;
+        padding-left: 2rem;
+        margin-bottom: 2rem;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .experience::before {
+        content: "";
+        position: absolute;
+        left: -8px;
+        top: 0;
+        width: 12px;
+        height: 12px;
+        background: #d4af37;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+      }
+
+      .experience:hover {
+        border-left-color: #ffd700;
+        transform: translateX(5px);
+      }
+
+      .experience:hover::before {
+        background: #ffd700;
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+      }
+
+      .experience h3 {
+        color: #d4af37;
+        margin-bottom: 0.3rem;
+        font-size: 1.3rem;
+      }
+
+      .experience-meta {
+        background: linear-gradient(135deg, #ffd700 0%, #d4af37 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .experience p,
+      .experience ul {
+        color: #c0c0c0;
+      }
+
+      .experience ul {
+        margin-left: 1.5rem;
+      }
+
+      .experience li {
+        margin-bottom: 0.5rem;
+      }
+
+      .experience strong {
+        color: #d4af37;
+      }
+
+      footer {
+        background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+        color: #d4af37;
+        text-align: center;
+        padding: 3rem 2rem;
+        margin-top: 3rem;
+        position: relative;
+        overflow: hidden;
+        border-top: 3px solid #d4af37;
+      }
+
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          #ffd700,
+          #d4af37,
+          #b8860b,
+          #d4af37,
+          #ffd700
+        );
+        background-size: 200% 100%;
+        animation: gradientSlide 3s linear infinite;
+      }
+
+      @keyframes gradientSlide {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 200% 50%;
+        }
+      }
+
+      footer p {
+        position: relative;
+        z-index: 1;
+        color: #d4af37;
+      }
+
+      @media (max-width: 768px) {
+        header h1 {
+          font-size: 2.5rem;
+        }
+
+        .profile-image,
+        .profile-placeholder {
+          width: 150px;
+          height: 150px;
+        }
+
+        .profile-ring {
+          width: 170px;
+          height: 170px;
+        }
+
+        .skills-grid {
+          grid-template-columns: 1fr;
+        }
+
+        section {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hex-pattern"></div>
+    <div class="bg-3d" id="particles3d"></div>
+    <div class="cube-container" id="cubes"></div>
+    <div class="waves">
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+    </div>
+    <div class="light-beam" style="left: 10%; animation-delay: 0s"></div>
+    <div class="light-beam" style="left: 30%; animation-delay: 3s"></div>
+    <div class="light-beam" style="left: 50%; animation-delay: 6s"></div>
+    <div class="light-beam" style="left: 70%; animation-delay: 2s"></div>
+    <div class="light-beam" style="left: 90%; animation-delay: 4s"></div>
+
+    <header>
+      <div class="profile-container">
+        <div class="profile-ring"></div>
+        <!-- Replace the div below with an img tag when you have your photo -->
+        <!-- <img src="your-photo.jpg" alt="Yasser Hesham" class="profile-image"> -->
+        <div class="profile-placeholder">
+          <img
+            src="StaticFiles/Gemini_Generated_Image_uarq2huarq2huarq.png"
+            alt="Yasser Hesham"
+            class="profile-image"
+          />
+        </div>
+      </div>
+      <h1>Yasser Hesham</h1>
+      <p>Software Engineer | .NET Backend Developer</p>
+      <div class="contact-links">
+        <a href="mailto:yasserhesham001@gmail.com">📧 Email</a>
+        <a href="tel:+201555593068">📱 +20 155 559 3068</a>
+        <a href="https://www.linkedin.com/in/yasserheshamlin/" target="_blank"
+          >💼 LinkedIn</a
+        >
+        <a href="https://github.com/YasserHesham-D" target="_blank"
+          >💻 GitHub</a
+        >
+      </div>
+    </header>
+
+    <div class="container">
+      <section class="about">
+        <h2>About Me</h2>
+        <p style="margin-bottom: 1.5rem">
+          Backend Developer with 1 year of hands-on experience specializing in
+          building secure, scalable, and high-performance .NET 8 Web APIs and
+          MVC applications. I have a proven track record of delivering
+          production-ready systems that serve real businesses with complex
+          operational needs.
+        </p>
+        <p style="margin-bottom: 1.5rem">
+          My expertise lies in architecting robust backend solutions using
+          modern technologies including Entity Framework Core, SQL Server, JWT
+          authentication, and implementing industry-standard design patterns.
+          I'm passionate about writing clean, maintainable code following SOLID
+          principles and clean architecture patterns that scale with business
+          growth.
+        </p>
+        <p style="margin-bottom: 1.5rem">
+          <strong>What I Bring to the Table:</strong>
+        </p>
+        <ul>
+          <li>
+            <strong>Security-First Mindset:</strong> Implementing comprehensive
+            authentication, authorization, CSRF protection, and rate limiting to
+            protect applications from vulnerabilities
+          </li>
+          <li>
+            <strong>Performance Optimization:</strong> Leveraging caching
+            strategies, query optimization, and efficient data access patterns
+            to ensure fast response times
+          </li>
+          <li>
+            <strong>Clean Architecture:</strong> Building maintainable systems
+            using repository patterns, dependency injection, and separation of
+            concerns
+          </li>
+          <li>
+            <strong>Production Experience:</strong> Successfully deployed
+            applications to cloud platforms with proper logging, monitoring, and
+            environment configurations
+          </li>
+          <li>
+            <strong>Problem Solver:</strong> Analyzing complex business
+            requirements and translating them into scalable technical solutions
+          </li>
+        </ul>
+        <p style="margin-top: 1.5rem">
+          I'm constantly learning and staying up-to-date with the latest .NET
+          ecosystem developments, best practices, and emerging technologies to
+          deliver cutting-edge solutions that drive business value.
+        </p>
+      </section>
+
+      <section>
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3>Backend Development</h3>
+            <ul>
+              <li>.NET 8 Web API</li>
+              <li>RESTful APIs</li>
+              <li>Entity Framework Core</li>
+              <li>C# (OOP, Async, LINQ)</li>
+              <li>Middleware & DI</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Database & Data</h3>
+            <ul>
+              <li>SQL Server</li>
+              <li>Database Design</li>
+              <li>Stored Procedures</li>
+              <li>Query Optimization</li>
+              <li>Transactions & Concurrency</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Security & Auth</h3>
+            <ul>
+              <li>JWT Authentication</li>
+              <li>Identity & RBAC</li>
+              <li>CSRF Protection</li>
+              <li>Rate Limiting</li>
+              <li>CORS Policies</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Architecture & Patterns</h3>
+            <ul>
+              <li>Clean Architecture</li>
+              <li>Onion Architecture</li>
+              <li>Repository Pattern</li>
+              <li>Unit of Work</li>
+              <li>SOLID Principles</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Tools & DevOps</h3>
+            <ul>
+              <li>Git (Branching, PRs)</li>
+              <li>Swagger/API Docs</li>
+              <li>Postman Testing</li>
+              <li>Serilog Logging</li>
+              <li>Railway Deployment</li>
+            </ul>
+          </div>
+
+          <div class="skill-category">
+            <h3>Additional Tech</h3>
+            <ul>
+              <li>SignalR (Real-time)</li>
+              <li>xUnit Testing</li>
+              <li>Caching Strategies</li>
+              <li>Email Services</li>
+              <li>DTOs & Mapping</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Featured Projects</h2>
+
+        <div class="project">
+          <h3>Inventory Management System (IMS)</h3>
+          <p class="project-meta">Freelance Project | Apr 2025 - Sep 2025</p>
+          <p>
+            Designed and developed a comprehensive, secure, and production-ready
+            inventory management system for an established business with over 15
+            years of operations. This enterprise-grade solution revolutionized
+            their inventory tracking, order management, and reporting
+            capabilities while ensuring data security and system reliability.
+          </p>
+
+          <p style="margin-top: 1.5rem">
+            <strong>🎯 Project Impact & Business Value:</strong>
+          </p>
+          <ul>
+            <li>
+              Streamlined inventory operations for 15+ year-old business,
+              improving efficiency by automating manual processes
+            </li>
+            <li>
+              Enabled real-time inventory tracking across multiple locations and
+              warehouses
+            </li>
+            <li>
+              Implemented role-based access control ensuring data security
+              across different user levels
+            </li>
+            <li>
+              Reduced operational errors through automated notifications and
+              validation systems
+            </li>
+          </ul>
+
+          <p style="margin-top: 1.5rem">
+            <strong>🔐 Security Implementation:</strong>
+          </p>
+          <ul>
+            <li>
+              <strong>Multi-Layer Authentication:</strong> JWT token-based
+              authentication with refresh token mechanism
+            </li>
+            <li>
+              <strong>Authorization:</strong> Fine-grained role-based access
+              control (RBAC) for different user permissions
+            </li>
+            <li>
+              <strong>CSRF Protection:</strong> Implemented anti-forgery tokens
+              to prevent cross-site request forgery attacks
+            </li>
+            <li>
+              <strong>Rate Limiting:</strong> Protected APIs from abuse with
+              configurable rate limiting policies
+            </li>
+            <li>
+              <strong>CORS Policies:</strong> Configured secure cross-origin
+              resource sharing for controlled access
+            </li>
+          </ul>
+
+          <div class="project-tech">
+            <span class="tech-tag">.NET 8</span>
+            <span class="tech-tag">EF Core</span>
+            <span class="tech-tag">SQL Server</span>
+            <span class="tech-tag">JWT</span>
+            <span class="tech-tag">Serilog</span>
+            <span class="tech-tag">Railway</span>
+            <span class="tech-tag">Clean Architecture</span>
+            <span class="tech-tag">Repository Pattern</span>
+          </div>
+        </div>
+
+        <div class="project">
+          <h3>
+            Enterprise Resource Management (ERM) API for Tourism Companies
+          </h3>
+          <p class="project-meta">Personal Project | Open Source</p>
+          <p>
+            A comprehensive, enterprise-grade .NET 8 RESTful API designed
+            specifically for tourism companies to manage their entire operation
+            ecosystem. This system handles everything from customer management
+            and hotel bookings to complex financial workflows, making it a
+            complete ERM solution for the tourism industry.
+          </p>
+
+          <p style="margin-top: 1.5rem">
+            <strong>📊 Core Modules & Features:</strong>
+          </p>
+          <ul>
+            <li>
+              <strong>Account Management:</strong> Complete user lifecycle
+              management with profile customization and preferences
+            </li>
+            <li>
+              <strong>Permission System:</strong> Granular permission control
+              for different user roles and departments
+            </li>
+            <li>
+              <strong>Hotel Management:</strong> Comprehensive hotel database
+              with availability tracking and booking management
+            </li>
+            <li>
+              <strong>Real-time Notifications:</strong> Instant updates for
+              bookings, payments, and system events via SignalR
+            </li>
+          </ul>
+
+          <div class="project-tech">
+            <span class="tech-tag">.NET 8</span>
+            <span class="tech-tag">Onion Architecture</span>
+            <span class="tech-tag">SignalR</span>
+            <span class="tech-tag">SQL Server</span>
+            <span class="tech-tag">JWT</span>
+            <span class="tech-tag">Repository Pattern</span>
+            <span class="tech-tag">Unit of Work</span>
+            <span class="tech-tag">EF Core</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
