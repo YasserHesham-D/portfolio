@@ -1234,27 +1234,24 @@
                     data-gallery="tour"
                     data-idx="1"
                   ></button>
-
-
-
                   <button
                     class="gallery-tab"
                     data-gallery="tour"
                     data-idx="2"
                   ></button>
                   <button
-                    class="gallery-tab active"
-                    data-gallery="api"
+                    class="gallery-tab"
+                    data-gallery="tour"
                     data-idx="3"
                   ></button>
                   <button
                     class="gallery-tab"
-                    data-gallery="api"
+                    data-gallery="tour"
                     data-idx="4"
                   ></button>
                   <button
                     class="gallery-tab"
-                    data-gallery="api"
+                    data-gallery="tour"
                     data-idx="5"
                   ></button>
                 </div>
@@ -1276,19 +1273,25 @@
                   </div>
                   <div class="gallery-slide">
                     <img
-                      src="StaticFiles/Screenshot 2026-06-16 072447.png"alt="API Driver Hotel Location"
+                      src="StaticFiles/Screenshot 2026-06-16 072447.png" alt="API Driver Hotel Location"
                     />
                   </div>
                   <div class="gallery-slide">
                     <img
-                      src="StaticFiles/Screenshot 2026-06-16 072458.png"alt="API Notifications PaymentMethod Services"
+                      src="StaticFiles/Screenshot 2026-06-16 072458.png" alt="API Notifications PaymentMethod Services"
+                    />
+                  </div>
+                  <div class="gallery-slide">
+                    <img
+                      src="StaticFiles/Screenshot 2026-06-16 072517.png" alt="API Services Detail"
                     />
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
+        </div>
+      </div>
     </section>
 
     <footer>
@@ -1337,7 +1340,7 @@
       });
 
       // Auto-cycle all galleries
-      ["ims", "pos", "tour", "api"].forEach(function (id) {
+      ["ims", "pos", "tour"].forEach(function (id) {
         var current = 0;
         var gallery = document.getElementById("gallery-" + id);
         var slides = gallery.querySelectorAll(".gallery-slide");
