@@ -1243,18 +1243,18 @@
                     data-idx="2"
                   ></button>
                   <button
-                    class="gallery-tab"
-                    data-gallery="tour"
+                    class="gallery-tab active"
+                    data-gallery="api"
                     data-idx="3"
                   ></button>
                   <button
                     class="gallery-tab"
-                    data-gallery="tour"
+                    data-gallery="api"
                     data-idx="4"
                   ></button>
                   <button
                     class="gallery-tab"
-                    data-gallery="tour"
+                    data-gallery="api"
                     data-idx="5"
                   ></button>
                 </div>
@@ -1282,11 +1282,6 @@
                   <div class="gallery-slide">
                     <img
                       src="StaticFiles/Screenshot 2026-06-16 072458.png"alt="API Notifications PaymentMethod Services"
-                    />
-                  </div>
-                  <div class="gallery-slide">
-                    <img
-                      src="StaticFiles/Screenshot 2026-06-16 072517.png" alt="API Additional Screenshot"
                     />
                   </div>
                 </div>
@@ -1379,8 +1374,6 @@
             </div>
           </div>
 
-        </div><!-- /projects-stack -->
-      </div><!-- /container -->
     </section>
 
     <footer>
@@ -1430,7 +1423,7 @@
       });
 
       // Auto-cycle all galleries
-      ["ims", "pos", "tour", "hadith"].forEach(function (id) {
+      ["ims", "pos", "tour", "api", "hadith"].forEach(function (id) {
         var current = 0;
         var gallery = document.getElementById("gallery-" + id);
         if (!gallery) return;
