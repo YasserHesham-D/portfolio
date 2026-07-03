@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome To My Theatre</title>
+    <title>Yasser Hesham · Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,17 +18,17 @@
         margin: 0;
         padding: 0;
       }
-      /* Root Variables */
+/* Root Variables */
       :root {
-        --gold: #d4af37;
-        --gold-bright: #ffd700;
-        --gold-deep: #b8860b;
-        --glass-border: rgba(212, 175, 55, 0.18);
+        --gold: #00d4ff;
+        --gold-bright: #40e8ff;
+        --gold-deep: #7c3aed;
+        --glass-border: rgba(0, 212, 255, 0.15);
         --glass-shadow:
-          0 8px 32px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.1);
-        --bg: #060608;
-        --text: #e8e0cc;
-        --text-muted: #8a8070;
+          0 8px 32px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 212, 255, 0.08);
+        --bg: #05070f;
+        --text: #e0eff8;
+        --text-muted: #5a7a91;
         --font-display: "Space Grotesk", sans-serif;
         --font-mono: "JetBrains Mono", monospace;
       }
@@ -51,23 +51,23 @@
         background:
           radial-gradient(
             ellipse 80% 60% at 50% -10%,
-            rgba(212, 175, 55, 0.12) 0%,
+            rgba(0, 212, 255, 0.10) 0%,
             transparent 65%
           ),
           radial-gradient(
             ellipse 50% 40% at 80% 80%,
-            rgba(212, 175, 55, 0.06) 0%,
+            rgba(124, 58, 237, 0.08) 0%,
             transparent 60%
           ),
-          #060608;
+          #05070f;
       }
       .grid-lines {
         position: fixed;
         inset: 0;
         z-index: -2;
         background-image:
-          linear-gradient(rgba(212, 175, 55, 0.04) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(212, 175, 55, 0.04) 1px, transparent 1px);
+          linear-gradient(rgba(0, 212, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 212, 255, 0.04) 1px, transparent 1px);
         background-size: 60px 60px;
         mask-image: radial-gradient(
           ellipse 100% 100% at 50% 0%,
@@ -89,7 +89,7 @@
         left: -150px;
         background: radial-gradient(
           circle,
-          rgba(212, 175, 55, 0.15),
+          rgba(0, 212, 255, 0.13),
           transparent 70%
         );
         animation: orbFloat 18s ease-in-out infinite;
@@ -101,7 +101,7 @@
         right: -80px;
         background: radial-gradient(
           circle,
-          rgba(180, 140, 20, 0.1),
+          rgba(124, 58, 237, 0.12),
           transparent 70%
         );
         animation: orbFloat 22s ease-in-out infinite reverse;
@@ -113,7 +113,7 @@
         left: 40%;
         background: radial-gradient(
           circle,
-          rgba(212, 175, 55, 0.08),
+          rgba(0, 180, 220, 0.07),
           transparent 70%
         );
         animation: orbFloat 15s ease-in-out infinite 4s;
@@ -208,8 +208,8 @@
         object-position: center top;
         border: 2px solid var(--gold);
         box-shadow:
-          0 0 0 8px rgba(212, 175, 55, 0.06),
-          0 0 40px rgba(212, 175, 55, 0.3);
+          0 0 0 8px rgba(0, 212, 255, 0.05),
+          0 0 40px rgba(0, 212, 255, 0.25);
       }
       .profile-ring {
         position: absolute;
@@ -224,7 +224,7 @@
         position: absolute;
         inset: -22px;
         border-radius: 50%;
-        border: 1px solid rgba(212, 175, 55, 0.2);
+        border: 1px solid rgba(0, 212, 255, 0.15);
         border-bottom-color: var(--gold);
         border-left-color: var(--gold-deep);
         animation: spinRing 6s linear infinite reverse;
@@ -242,9 +242,9 @@
         letter-spacing: -0.03em;
         background: linear-gradient(
           135deg,
-          #ffd700 0%,
-          #d4af37 45%,
-          #b8860b 100%
+          #40e8ff 0%,
+          #00d4ff 45%,
+          #7c3aed 100%
         );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -292,9 +292,9 @@
         backdrop-filter: blur(12px);
       }
       .btn-glass:hover {
-        background: rgba(212, 175, 55, 0.12);
+        background: rgba(0, 212, 255, 0.10);
         border-color: var(--gold);
-        box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.18);
         transform: translateY(-2px);
       }
       .btn-gold {
@@ -303,12 +303,12 @@
           var(--gold) 0%,
           var(--gold-deep) 100%
         );
-        color: #000;
+        color: #fff;
         border: none;
-        box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+        box-shadow: 0 4px 20px rgba(0, 212, 255, 0.25);
       }
       .btn-gold:hover {
-        box-shadow: 0 8px 30px rgba(212, 175, 55, 0.5);
+        box-shadow: 0 8px 30px rgba(0, 212, 255, 0.45);
         transform: translateY(-2px);
       }
 
@@ -380,7 +380,7 @@
         content: "";
         flex: 1;
         height: 1px;
-        background: linear-gradient(to right, var(--glass-border), transparent);
+        background: linear-gradient(to right, rgba(0, 212, 255, 0.2), transparent);
         max-width: 100px;
       }
       .section-title {
@@ -400,10 +400,10 @@
         transition: all 0.3s ease;
       }
       .glass:hover {
-        border-color: rgba(212, 175, 55, 0.3);
+        border-color: rgba(0, 212, 255, 0.28);
         box-shadow:
-          0 16px 48px rgba(0, 0, 0, 0.6),
-          0 0 0 1px rgba(212, 175, 55, 0.15);
+          0 16px 48px rgba(0, 0, 0, 0.65),
+          0 0 0 1px rgba(0, 212, 255, 0.12);
       }
 
       .about-grid {
@@ -433,13 +433,13 @@
       .trait {
         padding: 1.2rem;
         border-radius: 12px;
-        background: rgba(212, 175, 55, 0.04);
-        border: 1px solid rgba(212, 175, 55, 0.1);
+        background: rgba(0, 212, 255, 0.03);
+        border: 1px solid rgba(0, 212, 255, 0.09);
         transition: all 0.25s ease;
       }
       .trait:hover {
-        background: rgba(212, 175, 55, 0.08);
-        border-color: rgba(212, 175, 55, 0.22);
+        background: rgba(0, 212, 255, 0.07);
+        border-color: rgba(0, 212, 255, 0.2);
         transform: translateY(-3px);
       }
       .trait-icon {
@@ -480,6 +480,7 @@
           90deg,
           transparent,
           var(--gold),
+          var(--gold-deep),
           transparent
         );
       }
@@ -502,7 +503,7 @@
         display: flex;
         align-items: center;
         gap: 0.5rem;
-        border-bottom: 1px solid rgba(212, 175, 55, 0.06);
+        border-bottom: 1px solid rgba(0, 212, 255, 0.05);
         transition: color 0.2s;
       }
       .skill-list li:last-child {
@@ -567,8 +568,8 @@
       .project-meta-tag {
         display: inline-block;
         padding: 0.25rem 0.7rem;
-        background: rgba(212, 175, 55, 0.12);
-        border: 1px solid rgba(212, 175, 55, 0.25);
+        background: rgba(0, 212, 255, 0.09);
+        border: 1px solid rgba(0, 212, 255, 0.22);
         border-radius: 4px;
         font-size: 0.7rem;
         font-family: var(--font-mono);
@@ -610,15 +611,15 @@
       .tech-pill {
         padding: 0.3rem 0.8rem;
         border-radius: 20px;
-        background: rgba(212, 175, 55, 0.08);
-        border: 1px solid rgba(212, 175, 55, 0.2);
+        background: rgba(0, 212, 255, 0.07);
+        border: 1px solid rgba(0, 212, 255, 0.18);
         font-size: 0.72rem;
         font-family: var(--font-mono);
         color: var(--gold);
         transition: all 0.2s;
       }
       .tech-pill:hover {
-        background: rgba(212, 175, 55, 0.18);
+        background: rgba(0, 212, 255, 0.15);
         border-color: var(--gold);
         transform: translateY(-2px);
       }
@@ -646,7 +647,7 @@
         width: 8px;
         height: 8px;
         border-radius: 50%;
-        background: rgba(212, 175, 55, 0.3);
+        background: rgba(0, 212, 255, 0.25);
         border: none;
         cursor: pointer;
         transition: all 0.2s;
@@ -699,7 +700,7 @@
         background: linear-gradient(
           90deg,
           transparent,
-          var(--glass-border),
+          rgba(0, 212, 255, 0.12),
           transparent
         );
       }
@@ -1067,21 +1068,27 @@
                 <div class="gallery-slides" id="gallery-ims">
                   <div class="gallery-slide active">
                     <img
-                      src="StaticFiles/IMS1.png"
-                      alt="Available Stock Report"
+                      src="StaticFiles/Screenshot 2025-07-31 120222.png"
+                       alt="Available Stock Report"
                     />
                   </div>
                   <div class="gallery-slide">
                     <img
-                      src="StaticFiles/IMS2.png"
+                      src="StaticFiles/Screenshot 2025-07-31 120252.png"
                       alt="Branch Expenses Form"
                     />
                   </div>
                   <div class="gallery-slide">
-                    <img src="StaticFiles/IMS3.png" alt="Expiry Alerts List" />
+                    <img
+                      src="StaticFiles/Screenshot 2025-07-31 120822.png"
+                      alt="Expiry Alerts List"
+                    />
                   </div>
                   <div class="gallery-slide">
-                    <img src="StaticFiles/IMS4.png" alt="Branch Exports List" />
+                    <img
+                      src="StaticFiles/Screenshot 2025-08-01 100143.png"
+                      alt="Branch Exports List"
+                    />
                   </div>
                 </div>
               </div>
@@ -1153,21 +1160,20 @@
                 </div>
                 <div class="gallery-slides" id="gallery-pos">
                   <div class="gallery-slide active">
-                    <img src="StaticFiles/POS1.png" alt="POS Dashboard" />
-                  </div>
-                  <div class="gallery-slide">
-                    <img src="StaticFiles/POS2.png" alt="POS Reports" />
-                  </div>
-                  <div class="gallery-slide">
                     <img
-                      src="StaticFiles/POS3.png"
-                      alt="Profit and Loss Report"
+                      src="StaticFiles/Screenshot 2026-06-16 095549.png"
+                      alt="POS Dashboard"
                     />
                   </div>
                   <div class="gallery-slide">
                     <img
-                      src="StaticFiles/POS4.png"
-                      alt="Profit and Loss Report"
+                      src="StaticFiles/Screenshot 2026-06-16 095619.png"
+                      alt="POS Reports"
+                    />
+                  </div>
+                  <div class="gallery-slide">
+                    <img
+                      src="StaticFiles/Screenshot 2026-06-16 095536.png"alt="Profit and Loss Report"
                     />
                   </div>
                 </div>
@@ -1230,6 +1236,8 @@
                     data-idx="1"
                   ></button>
 
+
+
                   <button
                     class="gallery-tab"
                     data-gallery="tour"
@@ -1254,26 +1262,32 @@
                 <div class="gallery-slides" id="gallery-tour">
                   <div class="gallery-slide active">
                     <img
-                      src="StaticFiles/D1.png"
-                      alt="Tourism Analytics Dashboard"
-                    />
-                  </div>
-                  <div class="gallery-slide">
-                    <img src="StaticFiles/D2.png" alt="Receipt Voucher" />
-                  </div>
-                  <div class="gallery-slide">
-                    <img src="StaticFiles/D3.png" alt="Tourism Login" />
-                  </div>
-                  <div class="gallery-slide">
-                    <img
-                      src="StaticFiles/D4.png"
-                      alt="API Driver Hotel Location"
+                     src="StaticFiles/Screenshot 2026-06-16 070235.png" alt="Tourism Analytics Dashboard"
                     />
                   </div>
                   <div class="gallery-slide">
                     <img
-                      src="StaticFiles/D5.png"
-                      alt="API Notifications PaymentMethod Services"
+                     src="StaticFiles/Screenshot 2026-06-16 070305.png" alt="Receipt Voucher"
+                    />
+                  </div>
+                  <div class="gallery-slide">
+                    <img
+                     src="StaticFiles/Screenshot 2026-06-16 070334.png" alt="Tourism Login"
+                    />
+                  </div>
+                  <div class="gallery-slide">
+                    <img
+                      src="StaticFiles/Screenshot 2026-06-16 072447.png"alt="API Driver Hotel Location"
+                    />
+                  </div>
+                  <div class="gallery-slide">
+                    <img
+                      src="StaticFiles/Screenshot 2026-06-16 072458.png"alt="API Notifications PaymentMethod Services"
+                    />
+                  </div>
+                  <div class="gallery-slide">
+                    <img
+                      src="StaticFiles/Screenshot 2026-06-16 072517.png" alt="API Additional Screenshot"
                     />
                   </div>
                 </div>
@@ -1290,40 +1304,29 @@
                 </div>
                 <h3 class="project-title">Hadith Tab (Chrome Extension)</h3>
                 <span class="project-meta-tag"
-                  >Personal Project &middot; Chrome Extension &middot;
-                  Glassmorphic UI &middot; Productivity</span
+                  >Personal Project &middot; Chrome Extension &middot; Glassmorphic UI &middot; Productivity</span
                 >
                 <p class="project-desc">
-                  A beautiful, premium, and feature-rich new tab page Chrome
-                  extension designed to inspire you with authentic Hadiths every
-                  time you open a new tab. Combining a state-of-the-art
-                  glassmorphic design with productivity widgets, it offers a
-                  serene, modern dashboard for daily browsing.
+                  A beautiful, premium, and feature-rich new tab page Chrome extension designed to inspire you with authentic Hadiths every time you open a new tab. Combining a state-of-the-art glassmorphic design with productivity widgets, it offers a serene, modern dashboard for daily browsing.
                 </p>
                 <ul class="feature-list">
                   <li>
-                    Premium Glassmorphic UI: Translucent glass containers with
-                    Outfit & Amiri font pairings
+                    Premium Glassmorphic UI: Translucent glass containers with Outfit & Amiri font pairings
                   </li>
                   <li>
-                    Gregorian & Hijri Clock: Clock widget with 12/24-hour
-                    formats and dynamic Hijri date calculation
+                    Gregorian & Hijri Clock: Clock widget with 12/24-hour formats and dynamic Hijri date calculation
                   </li>
                   <li>
-                    Interactive Dhikr Counter: Circular progress ring tracker
-                    with presets and goal targets (33, 99, 100, ∞)
+                    Interactive Dhikr Counter: Circular progress ring tracker with presets and goal targets (33, 99, 100, ∞)
                   </li>
                   <li>
-                    Bookmarks Drawer: Slide-out drawer to save, copy, manage,
-                    and load favorite Hadiths locally
+                    Bookmarks Drawer: Slide-out drawer to save, copy, manage, and load favorite Hadiths locally
                   </li>
                   <li>
-                    Multiple Hadith Collections: Toggle between Sahih
-                    al-Bukhari, Sahih Muslim, and other authentic books
+                    Multiple Hadith Collections: Toggle between Sahih al-Bukhari, Sahih Muslim, and other authentic books
                   </li>
                   <li>
-                    Aesthetic Wallpapers: Includes 12 high-resolution
-                    backgrounds with a "Change Wall" cycle feature
+                    Aesthetic Wallpapers: Includes 12 high-resolution backgrounds with a "Change Wall" cycle feature
                   </li>
                 </ul>
                 <div class="tech-pills">
@@ -1376,10 +1379,9 @@
               </div>
             </div>
           </div>
-        </div>
-        <!-- /projects-stack -->
-      </div>
-      <!-- /container -->
+
+        </div><!-- /projects-stack -->
+      </div><!-- /container -->
     </section>
 
     <footer>
@@ -1415,9 +1417,11 @@
           var idx = parseInt(btn.dataset.idx);
           var gallery = document.getElementById("gallery-" + gid);
           if (!gallery) return;
-          gallery.querySelectorAll(".gallery-slide").forEach(function (s, i) {
-            s.classList.toggle("active", i === idx);
-          });
+          gallery
+            .querySelectorAll(".gallery-slide")
+            .forEach(function (s, i) {
+              s.classList.toggle("active", i === idx);
+            });
           document
             .querySelectorAll('[data-gallery="' + gid + '"]')
             .forEach(function (t, i) {
